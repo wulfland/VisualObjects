@@ -1,20 +1,8 @@
-#Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Visual Objects
+This sample project renders a set of objects in the browser. Each object is represented by an Actor, where the location and trajectory of each is calculated on the server side by the Actor representing the object.
 
-#Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+## How to run Visual Objects
+Press ctrl+F5 in Visual Studio to run (or just F5 to debug). Once the application has started, go to [http://localhost:8082/visualobjects](http://localhost:8082/visualobjects). Try opening it in multiple browser windows or on multiple machines to see how the server-side calculation produces the same result on every screen.
 
-#Build and Test
-TODO: Describe and show how to build your code and run the tests. 
-
-#Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## How to Perform an Upgrade
+Look inside of the StatefulVisualObjectActor.cs file for the MoveObject method. You should see a line "visualObject.Move(false);" Comment out this line and replace it with the one below where the value is set to true. Then right click on the VisualObjectsApplication project and select publish. Change the version of the code package inside the VisualObjects.ActorService package, and ensure that all of the versions for the service package and application type are changed as well. Click Save, and then ensure that you are targeting the correct cluster, then click publish.
