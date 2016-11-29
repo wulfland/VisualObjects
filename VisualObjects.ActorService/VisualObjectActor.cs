@@ -52,8 +52,8 @@ namespace VisualObjects.ActorService
             //then do an upgrade to cause the
             //visual objects to start rotating
 
-            visualObject.Move(false);
-            //visualObject.Move(true);
+            //visualObject.Move(false);
+            visualObject.Move(true);
 
             await this.StateManager.SetStateAsync<VisualObject>(StatePropertyName, visualObject);
 

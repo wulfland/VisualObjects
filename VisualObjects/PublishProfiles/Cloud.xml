@@ -16,6 +16,9 @@
                                     StoreName="My" />
 
   -->
-  <ClusterConnectionParameters ConnectionEndpoint="Please specify a connection endpoint." />
+  <ClusterConnectionParameters ConnectionEndpoint="alegriservicefabric.westeurope.cloudapp.azure.com:19000" X509Credential="true" FindType="FindByThumbprint" FindValue="140BD79EB456348F50FC388515410B61A1FDB2B9" ServerCertThumbprint="140BD79EB456348F50FC388515410B61A1FDB2B9" StoreLocation="CurrentUser" StoreName="My" />
   <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
+  <UpgradeDeployment Mode="Monitored" Enabled="true">
+    <Parameters FailureAction="Rollback" Force="True" />
+  </UpgradeDeployment>
 </PublishProfile>
