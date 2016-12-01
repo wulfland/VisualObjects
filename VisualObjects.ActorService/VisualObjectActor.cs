@@ -10,6 +10,7 @@ namespace VisualObjects.ActorService
     using VisualObjects.Common;
     using Microsoft.ServiceFabric.Actors.Runtime;
     using Microsoft.ServiceFabric.Actors;
+    using LaunchDarkly.Client;
 
     [ActorService(Name = "VisualObjects.ActorService")]
     [StatePersistence(StatePersistence.Persisted)]
@@ -21,7 +22,7 @@ namespace VisualObjects.ActorService
         private string jsonString;
 
         public VisualObjectActor(ActorService actorService, ActorId actorId)
-            : base (actorService, actorId)
+            : base(actorService, actorId)
         { }
 
         public Task<string> GetStateAsJsonAsync()
@@ -52,8 +53,21 @@ namespace VisualObjects.ActorService
             //then do an upgrade to cause the
             //visual objects to start rotating
 
-            //visualObject.Move(false);
-            visualObject.Move(true);
+            LdClient client = new LdClient("sdk-95af6c33-4e12-4532-abde-9ea5a62aef1e");
+
+            User user = User.WithKey("mkaufmann").AndAnonymous(true);
+
+            if(client.BoolVariation("rotate-object-flag", user, false))
+            {
+                visualObject.Move(true);
+            }
+            else
+            {
+                visualObject.Move(false);
+            }
+
+            client.Flush();
+            
 
             await this.StateManager.SetStateAsync<VisualObject>(StatePropertyName, visualObject);
 
