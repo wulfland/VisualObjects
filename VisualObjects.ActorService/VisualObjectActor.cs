@@ -20,6 +20,8 @@ namespace VisualObjects.ActorService
         private static readonly string StatePropertyName = "VisualObject";
         private IActorTimer updateTimer;
         private string jsonString;
+        private LdClient client = new LdClient("sdk-95af6c33-4e12-4532-abde-9ea5a62aef1e");
+        private User user = User.WithKey("kaufm");
 
         public VisualObjectActor(ActorService actorService, ActorId actorId)
             : base(actorService, actorId)
@@ -52,10 +54,6 @@ namespace VisualObjects.ActorService
             //alternate which lines are commented out
             //then do an upgrade to cause the
             //visual objects to start rotating
-
-            LdClient client = new LdClient("sdk-95af6c33-4e12-4532-abde-9ea5a62aef1e");
-
-            User user = User.WithKey("kaufm");
 
             if(client.BoolVariation("rotate-object-flag", user, false))
             {
