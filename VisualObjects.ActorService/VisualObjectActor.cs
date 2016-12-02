@@ -55,7 +55,7 @@ namespace VisualObjects.ActorService
 
             LdClient client = new LdClient("sdk-95af6c33-4e12-4532-abde-9ea5a62aef1e");
 
-            User user = User.WithKey("mkaufmann").AndAnonymous(true);
+            User user = User.WithKey("kaufm");
 
             if(client.BoolVariation("rotate-object-flag", user, false))
             {
@@ -66,7 +66,7 @@ namespace VisualObjects.ActorService
                 visualObject.Move(false);
             }
 
-            client.Flush();
+            //client.Flush();
             
 
             await this.StateManager.SetStateAsync<VisualObject>(StatePropertyName, visualObject);
