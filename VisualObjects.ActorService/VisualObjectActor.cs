@@ -54,6 +54,7 @@ namespace VisualObjects.ActorService
             //alternate which lines are commented out
             //then do an upgrade to cause the
             //visual objects to start rotating
+            //
 
             if(client.BoolVariation("rotate-object-flag", user, false))
             {
