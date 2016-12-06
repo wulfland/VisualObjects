@@ -51,23 +51,17 @@ namespace VisualObjects.ActorService
         {
             VisualObject visualObject = await this.StateManager.GetStateAsync<VisualObject>(StatePropertyName);
 
-            //alternate which lines are commented out
-            //then do an upgrade to cause the
-            //visual objects to start rotating
-            //
+            visualObject.Move(false);
 
-            if(client.BoolVariation("rotate-object-flag", user, false))
-            {
-                visualObject.Move(true);
-            }
-            else
-            {
-                visualObject.Move(false);
-            }
-
-            //client.Flush();
+            //if (client.BoolVariation("rotate-object-flag", user, false))
+            //{
+            //    visualObject.Move(true);
+            //}
+            //else
+            //{
+            //    visualObject.Move(false);
+            //}
             
-
             await this.StateManager.SetStateAsync<VisualObject>(StatePropertyName, visualObject);
 
             this.jsonString = visualObject.ToJson();
