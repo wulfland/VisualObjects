@@ -20,8 +20,8 @@ namespace VisualObjects.ActorService
         private static readonly string StatePropertyName = "VisualObject";
         private IActorTimer updateTimer;
         private string jsonString;
-        private LdClient client = new LdClient("sdk-95af6c33-4e12-4532-abde-9ea5a62aef1e");
-        private User user = User.WithKey("kaufm");
+        private LdClient client = new LdClient("sdk-<your id here>");
+        private User user = User.WithKey("<your user here>");
 
         public VisualObjectActor(ActorService actorService, ActorId actorId)
             : base(actorService, actorId)
